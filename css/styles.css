@@ -64,11 +64,15 @@ nav {
     color: var(--secondary);
 }
 
-/* Styles pour le sélecteur de langue */
+/* Styles améliorés pour le sélecteur de langue */
 .language-selector {
     display: flex;
-    gap: 10px;
-    margin-left: 20px;
+    align-items: center;
+    margin-left: 25px;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .language-selector a {
@@ -76,17 +80,34 @@ nav {
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
-    padding: 5px 10px;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    padding: 8px 12px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.language-selector a:not(:last-child)::after {
+    content: '';
+    height: 60%;
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+    position: absolute;
+    right: 0;
+    top: 20%;
 }
 
 .language-selector a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .language-selector a.active {
     background-color: var(--secondary);
+}
+
+.language-selector .flag-icon {
+    margin-right: 5px;
+    font-size: 16px;
 }
 
 .nav-container {
@@ -269,6 +290,7 @@ footer {
     color: #bdc3c7;
 }
 
+/* Styles mobiles améliorés pour le sélecteur de langue */
 @media (max-width: 992px) {
     .nav-container {
         flex-direction: column;
@@ -276,7 +298,7 @@ footer {
     }
     
     .language-selector {
-        margin-top: 10px;
+        margin-top: 15px;
         margin-left: 0;
     }
 }
@@ -297,4 +319,34 @@ footer {
     .nav-container {
         align-items: center;
     }
+    
+    .language-selector {
+        position: relative;
+        z-index: 100; /* S'assurer qu'il est visible au-dessus des autres éléments */
+    }
+}
+
+/* Animation subtile pour le sélecteur de langue */
+.language-selector a {
+    position: relative;
+    overflow: hidden;
+}
+
+.language-selector a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+.language-selector a:hover::before {
+    width: 100%;
+}
+
+.language-selector a.active::before {
+    display: none;
 }
