@@ -1,0 +1,77 @@
+/**
+ * Styles pour les drapeaux des langues
+ * Utilisé pour améliorer la visibilité du sélecteur de langue
+ */
+
+.flag {
+    display: inline-block;
+    width: 20px;
+    height: 15px;
+    margin-right: 6px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.flag-fr {
+    background-image: url('https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/fr.svg');
+}
+
+.flag-en {
+    background-image: url('https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/gb.svg');
+}
+
+.flag-es {
+    background-image: url('https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/es.svg');
+}
+
+/* Style amélioré pour le sélecteur de langue */
+.language-selector {
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 2px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.language-selector a {
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+    margin: 0 2px;
+}
+
+.language-selector a.active {
+    background-color: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Style flottant pour mobile */
+@media (max-width: 768px) {
+    .language-selector-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+    }
+    
+    .language-selector {
+        background-color: var(--primary);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Ajouter un effet de pulsation pour attirer l'attention */
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    
+    .language-selector {
+        animation: pulse 2s infinite;
+    }
+}
