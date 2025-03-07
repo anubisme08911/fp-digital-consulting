@@ -6,14 +6,20 @@
     <title>F&P DIGITAL CONSULTING | Transformación Digital</title>
     <meta name="description" content="F&P Digital Consulting le acompaña en cada etapa de su transformación digital para afrontar los desafíos del mañana.">
     <!-- Meta tags para SEO multilingüe -->
-    <link rel="alternate" hreflang="fr" href="https://www.fpdigitalconsulting.com/" />
-    <link rel="alternate" hreflang="en" href="https://www.fpdigitalconsulting.com/en/" />
-    <link rel="alternate" hreflang="es" href="https://www.fpdigitalconsulting.com/es/" />
-    <link rel="alternate" hreflang="x-default" href="https://www.fpdigitalconsulting.com/" />
+    <link rel="alternate" hreflang="fr" href="https://anubisme08911.github.io/fp-digital-consulting/" />
+    <link rel="alternate" hreflang="en" href="https://anubisme08911.github.io/fp-digital-consulting/en/" />
+    <link rel="alternate" hreflang="es" href="https://anubisme08911.github.io/fp-digital-consulting/es/" />
+    <link rel="alternate" hreflang="x-default" href="https://anubisme08911.github.io/fp-digital-consulting/" />
+    <!-- Estilos -->
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/language-flags.css">
+    <link rel="stylesheet" href="../css/modern-elements.css">
     <!-- Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -22,10 +28,10 @@
                 <div class="logo">F&P <span class="highlight">DIGITAL CONSULTING</span></div>
                 <div class="nav-container">
                     <div class="nav-links">
-                        <a href="#services">Servicios</a>
-                        <a href="#approach">Nuestro Enfoque</a>
-                        <a href="#about">Nosotros</a>
-                        <a href="#contact">Contacto</a>
+                        <a href="#services" class="nav-item">Servicios</a>
+                        <a href="#approach" class="nav-item">Nuestro Enfoque</a>
+                        <a href="#about" class="nav-item">Nosotros</a>
+                        <a href="#contact" class="nav-item">Contacto</a>
                     </div>
                     <div class="language-selector">
                         <a href="#" data-lang="fr"><span class="flag flag-fr"></span> FR</a>
@@ -40,9 +46,9 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Transformación Digital para su Empresa</h1>
+                <h1 class="typing-effect" data-text="Transformación Digital para su Empresa">Transformación Digital para su Empresa</h1>
                 <p>Le acompañamos en cada etapa de su transformación digital para afrontar los desafíos del mañana.</p>
-                <a href="#contact" class="btn">Contáctenos</a>
+                <a href="#contact" class="btn bounce">Contáctenos <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -52,19 +58,22 @@
             <h2 class="section-title">Nuestros Servicios</h2>
             <div class="services">
                 <div class="service-card">
-                    <div class="service-icon">⚙️</div>
+                    <div class="service-icon"><i class="fas fa-cogs"></i></div>
                     <h3>Consultoría Estratégica</h3>
                     <p>Elaboración de estrategias digitales a medida para optimizar sus procesos y desarrollar nuevos modelos de negocio.</p>
+                    <a href="#contact" class="service-link">Más información <i class="fas fa-chevron-right"></i></a>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">📊</div>
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
                     <h3>Transformación Digital</h3>
                     <p>Acompañamiento completo en la transición hacia lo digital, desde la auditoría inicial hasta la implementación de soluciones.</p>
+                    <a href="#contact" class="service-link">Más información <i class="fas fa-chevron-right"></i></a>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">👥</div>
+                    <div class="service-icon"><i class="fas fa-users"></i></div>
                     <h3>Coaching Profesional</h3>
                     <p>Sesiones de coaching personalizadas para desarrollar las habilidades digitales de sus equipos y fomentar la adopción de nuevas tecnologías.</p>
+                    <a href="#contact" class="service-link">Más información <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
         </div>
@@ -102,6 +111,20 @@
         <div class="container">
             <h2 class="section-title">Sobre Nosotros</h2>
             <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number counter" data-target="50">0</div>
+                        <div class="stat-title">Proyectos realizados</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number counter" data-target="15">0</div>
+                        <div class="stat-title">Expertos en digital</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number counter" data-target="98">0</div>
+                        <div class="stat-title">% Satisfacción cliente</div>
+                    </div>
+                </div>
                 <p style="font-size: 18px; margin-bottom: 30px;">
                     F&P DIGITAL CONSULTING es una empresa especializada en el acompañamiento de empresas frente a los desafíos de la transición digital. Combinamos experiencia técnica y visión estratégica para ayudarle a aprovechar las oportunidades que ofrece la digitalización.
                 </p>
@@ -116,7 +139,7 @@
         <div class="container">
             <h2>¿Listo para Transformar su Empresa?</h2>
             <p style="font-size: 18px; margin-bottom: 30px;">Contáctenos hoy mismo para hablar de sus necesidades de transformación digital y coaching.</p>
-            <a href="#contact" class="btn">Solicitar un Presupuesto Gratuito</a>
+            <a href="#contact" class="btn">Solicitar un Presupuesto Gratuito <i class="fas fa-file-invoice"></i></a>
         </div>
     </section>
     
@@ -127,17 +150,17 @@
                 <p style="font-size: 18px; margin-bottom: 30px;">
                     Estamos a su disposición para responder a todas sus preguntas y acompañarle en su transformación digital.
                 </p>
-                <div style="background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                <div class="contact-box">
                     <div style="margin-bottom: 20px;">
-                        <h3 style="color: var(--primary); margin-bottom: 10px;">Email</h3>
+                        <h3 style="color: var(--primary); margin-bottom: 10px;"><i class="fas fa-envelope"></i> Email</h3>
                         <p>contact@fpdigitalconsulting.com</p>
                     </div>
                     <div style="margin-bottom: 20px;">
-                        <h3 style="color: var(--primary); margin-bottom: 10px;">Teléfono</h3>
+                        <h3 style="color: var(--primary); margin-bottom: 10px;"><i class="fas fa-phone"></i> Teléfono</h3>
                         <p>+34 XXX XXX XXX</p>
                     </div>
                     <div>
-                        <h3 style="color: var(--primary); margin-bottom: 10px;">Dirección</h3>
+                        <h3 style="color: var(--primary); margin-bottom: 10px;"><i class="fas fa-map-marker-alt"></i> Dirección</h3>
                         <p>AVENIDA NAVARRA, 20<br>08911 - Badalona<br>España</p>
                     </div>
                 </div>
@@ -151,6 +174,11 @@
                 <div>
                     <div class="footer-logo">F&P <span class="highlight">DIGITAL CONSULTING</span></div>
                     <p>Su socio en transformación digital y coaching profesional.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <h3>Servicios</h3>
@@ -176,7 +204,9 @@
         </div>
     </footer>
     
-    <!-- Script de cambio de idioma -->
+    <!-- Scripts -->
     <script src="../js/language-switcher.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="../js/particles.js"></script>
 </body>
 </html>
