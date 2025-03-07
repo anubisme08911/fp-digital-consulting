@@ -10,10 +10,16 @@
     <link rel="alternate" hreflang="en" href="https://anubisme08911.github.io/fp-digital-consulting/en/" />
     <link rel="alternate" hreflang="es" href="https://anubisme08911.github.io/fp-digital-consulting/es/" />
     <link rel="alternate" hreflang="x-default" href="https://anubisme08911.github.io/fp-digital-consulting/" />
+    <!-- Styles -->
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/language-flags.css">
+    <link rel="stylesheet" href="../css/modern-elements.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -22,10 +28,10 @@
                 <div class="logo">F&P <span class="highlight">DIGITAL CONSULTING</span></div>
                 <div class="nav-container">
                     <div class="nav-links">
-                        <a href="#services">Services</a>
-                        <a href="#approach">Our Approach</a>
-                        <a href="#about">About</a>
-                        <a href="#contact">Contact</a>
+                        <a href="#services" class="nav-item">Services</a>
+                        <a href="#approach" class="nav-item">Our Approach</a>
+                        <a href="#about" class="nav-item">About</a>
+                        <a href="#contact" class="nav-item">Contact</a>
                     </div>
                     <div class="language-selector">
                         <a href="#" data-lang="fr"><span class="flag flag-fr"></span> FR</a>
@@ -40,9 +46,9 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Digital Transformation for Your Business</h1>
+                <h1 class="typing-effect" data-text="Digital Transformation for Your Business">Digital Transformation for Your Business</h1>
                 <p>We guide you through every step of your digital transformation to meet tomorrow's challenges.</p>
-                <a href="#contact" class="btn">Contact Us</a>
+                <a href="#contact" class="btn bounce">Contact Us <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -52,19 +58,22 @@
             <h2 class="section-title">Our Services</h2>
             <div class="services">
                 <div class="service-card">
-                    <div class="service-icon">⚙️</div>
+                    <div class="service-icon"><i class="fas fa-cogs"></i></div>
                     <h3>Strategic Consulting</h3>
                     <p>Development of tailored digital strategies to optimize your processes and develop new business models.</p>
+                    <a href="#contact" class="service-link">Learn more <i class="fas fa-chevron-right"></i></a>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">📊</div>
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
                     <h3>Digital Transformation</h3>
                     <p>Comprehensive support in the transition to digital, from initial audit to solution implementation.</p>
+                    <a href="#contact" class="service-link">Learn more <i class="fas fa-chevron-right"></i></a>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">👥</div>
+                    <div class="service-icon"><i class="fas fa-users"></i></div>
                     <h3>Professional Coaching</h3>
                     <p>Personalized coaching sessions to develop your team's digital skills and promote the adoption of new technologies.</p>
+                    <a href="#contact" class="service-link">Learn more <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
         </div>
@@ -102,6 +111,20 @@
         <div class="container">
             <h2 class="section-title">About Us</h2>
             <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <div class="stat-number counter" data-target="50">0</div>
+                        <div class="stat-title">Projects completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number counter" data-target="15">0</div>
+                        <div class="stat-title">Digital experts</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number counter" data-target="98">0</div>
+                        <div class="stat-title">% Client satisfaction</div>
+                    </div>
+                </div>
                 <p style="font-size: 18px; margin-bottom: 30px;">
                     F&P DIGITAL CONSULTING is a company specializing in supporting businesses facing the challenges of digital transition. We combine technical expertise and strategic vision to help you leverage the opportunities offered by digitalization.
                 </p>
@@ -116,7 +139,7 @@
         <div class="container">
             <h2>Ready to Transform Your Business?</h2>
             <p style="font-size: 18px; margin-bottom: 30px;">Contact us today to discuss your digital transformation and coaching needs.</p>
-            <a href="#contact" class="btn">Request a Free Quote</a>
+            <a href="#contact" class="btn">Request a Free Quote <i class="fas fa-file-invoice"></i></a>
         </div>
     </section>
     
@@ -127,17 +150,17 @@
                 <p style="font-size: 18px; margin-bottom: 30px;">
                     We are at your disposal to answer all your questions and support you in your digital transformation.
                 </p>
-                <div style="background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                <div class="contact-box">
                     <div style="margin-bottom: 20px;">
-                        <h3 style="color: var(--primary); margin-bottom: 10px;">Email</h3>
+                        <h3 style="color: var(--primary); margin-bottom: 10px;"><i class="fas fa-envelope"></i> Email</h3>
                         <p>contact@fpdigitalconsulting.com</p>
                     </div>
                     <div style="margin-bottom: 20px;">
-                        <h3 style="color: var(--primary); margin-bottom: 10px;">Phone</h3>
+                        <h3 style="color: var(--primary); margin-bottom: 10px;"><i class="fas fa-phone"></i> Phone</h3>
                         <p>+34 XXX XXX XXX</p>
                     </div>
                     <div>
-                        <h3 style="color: var(--primary); margin-bottom: 10px;">Address</h3>
+                        <h3 style="color: var(--primary); margin-bottom: 10px;"><i class="fas fa-map-marker-alt"></i> Address</h3>
                         <p>AVENIDA NAVARRA, 20<br>08911 - Badalona<br>Spain</p>
                     </div>
                 </div>
@@ -151,6 +174,11 @@
                 <div>
                     <div class="footer-logo">F&P <span class="highlight">DIGITAL CONSULTING</span></div>
                     <p>Your partner in digital transformation and professional coaching.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <h3>Services</h3>
@@ -176,7 +204,9 @@
         </div>
     </footer>
     
-    <!-- Language switcher script -->
+    <!-- Scripts -->
     <script src="../js/language-switcher.js"></script>
+    <script src="../js/animations.js"></script>
+    <script src="../js/particles.js"></script>
 </body>
 </html>
