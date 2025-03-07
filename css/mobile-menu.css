@@ -1,0 +1,170 @@
+/**
+ * Styles pour le menu hamburger mobile
+ */
+
+/* Conteneur pour le bouton hamburger */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1001;
+    margin-right: 20px;
+}
+
+/* Barres du hamburger */
+.mobile-menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Transformation des barres quand le menu est ouvert */
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+/* Container du menu mobile */
+.mobile-nav-container {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--primary), var(--dark));
+    z-index: 1000;
+    padding: 80px 20px 30px;
+    transition: right 0.3s ease-in-out;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+/* Menu mobile ouvert */
+.mobile-nav-container.active {
+    right: 0;
+}
+
+/* Liens dans le menu mobile */
+.mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mobile-nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.mobile-nav-links a i {
+    margin-right: 10px;
+    font-size: 16px;
+    color: var(--accent);
+}
+
+.mobile-nav-links a:hover {
+    color: var(--accent);
+    padding-left: 5px;
+}
+
+/* Sélecteur de langue dans le menu mobile */
+.mobile-language-selector {
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+.mobile-language-selector .language-title {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.mobile-language-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mobile-language-option {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.mobile-language-option.active {
+    background-color: var(--accent);
+    color: var(--dark);
+}
+
+.mobile-language-option:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.mobile-language-option .language-flag {
+    margin-right: 10px;
+}
+
+/* Overlay pour le menu mobile */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(3px);
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Media queries pour l'affichage du menu mobile */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .nav-container .nav-links {
+        display: none;
+    }
+    
+    .nav-container {
+        justify-content: flex-end;
+    }
+    
+    .language-dropdown {
+        display: none;
+    }
+}
