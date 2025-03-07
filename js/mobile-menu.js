@@ -41,6 +41,71 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
+    // Fonction pour changer de langue
+    function changeLanguage(lang) {
+        // Pour GitHub Pages, utilisez la base du repo comme préfixe
+        const baseUrl = '/fp-digital-consulting';
+        
+        // Déterminer la nouvelle URL basée sur la langue sélectionnée
+        let newPath;
+        
+        if (lang === 'fr') {
+            newPath = baseUrl + '/';
+        } else {
+            newPath = baseUrl + '/' + lang;
+        }
+        
+        // Ajouter les query parameters existants s'il y en a
+        if (window.location.search) {
+            newPath += window.location.search;
+        }
+        
+        // Ajouter le hash s'il y en a un (pour la navigation par ancre)
+        if (window.location.hash) {
+            newPath += window.location.hash;
+        }
+        
+        // Sauvegarder la langue préférée
+        localStorage.setItem('preferredLanguage', lang);
+        
+        // Animer la transition avant de changer de page
+        animatePageTransition().then(() => {
+            // Rediriger vers la nouvelle URL
+            window.location.href = newPath;
+        });
+    }
+    
+    // Fonction pour animer la transition de page
+    function animatePageTransition() {
+        return new Promise((resolve) => {
+            // Créer un élément de transition
+            const overlay = document.createElement('div');
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'var(--primary)';
+            overlay.style.zIndex = '9999';
+            overlay.style.opacity = '0';
+            overlay.style.transition = 'opacity 0.3s ease';
+            
+            // Ajouter au DOM
+            document.body.appendChild(overlay);
+            
+            // Forcer un reflow
+            void overlay.offsetWidth;
+            
+            // Déclencher l'animation
+            overlay.style.opacity = '0.5';
+            
+            // Attendre la fin de l'animation
+            setTimeout(() => {
+                resolve();
+            }, 300);
+        });
+    }
+    
     // Gestion du changement de langue en mobile
     mobileLanguageOptions.forEach(option => {
         option.addEventListener('click', function(e) {
@@ -55,17 +120,13 @@ document.addEventListener('DOMContentLoaded', function() {
             // Récupérer la langue sélectionnée
             const selectedLang = this.getAttribute('data-lang');
             
-            // Logique pour changer de langue (à adapter selon votre implémentation existante)
-            if (typeof switchLanguage === 'function') {
-                switchLanguage(selectedLang);
-            } else {
-                console.log('Changement de langue vers:', selectedLang);
-                // Redirection vers la version linguistique appropriée
-                // window.location.href = `/${selectedLang}/`;
-            }
-            
             // Fermer le menu mobile
             toggleMobileMenu();
+            
+            // Changer de langue avec une petite temporisation
+            setTimeout(() => {
+                changeLanguage(selectedLang);
+            }, 300);
         });
     });
     
