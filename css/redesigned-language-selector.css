@@ -1,0 +1,194 @@
+/**
+ * Styles pour un sélecteur de langue redessiné et plus ergonomique
+ * Nouvelle version avec dropdown, meilleure visibilité et accessibilité
+ */
+
+/* Container principal du sélecteur de langue */
+.language-dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 1000;
+  margin-left: 15px;
+}
+
+/* Bouton principal du sélecteur */
+.language-current {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 30px;
+  padding: 8px 16px;
+  cursor: pointer;
+  color: white;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.language-current:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Icône du globe */
+.language-current .globe-icon {
+  font-size: 16px;
+  margin-right: 10px;
+  color: var(--accent);
+}
+
+/* Drapeaux dans le sélecteur */
+.language-flag {
+  width: 20px;
+  height: 15px;
+  margin-right: 8px;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background-size: cover;
+  background-position: center;
+}
+
+.flag-fr {
+  background-image: url('https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/fr.svg');
+}
+
+.flag-en {
+  background-image: url('https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/gb.svg');
+}
+
+.flag-es {
+  background-image: url('https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/es.svg');
+}
+
+/* Contenu du dropdown */
+.language-options {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  padding: 10px 0;
+  min-width: 160px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  z-index: 1001;
+}
+
+/* Afficher le dropdown quand le sélecteur est actif */
+.language-dropdown.active .language-options {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Options de langues dans le dropdown */
+.language-option {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  color: var(--primary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.language-option:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.language-option.active {
+  background-color: rgba(78, 225, 160, 0.15);
+  font-weight: 600;
+}
+
+/* Nom des langues */
+.language-name {
+  margin-left: 5px;
+  font-size: 14px;
+}
+
+/* Style mobile pour le sélecteur de langue */
+@media (max-width: 768px) {
+  .language-dropdown-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  
+  .language-dropdown {
+    margin: 0;
+  }
+  
+  .language-current {
+    background-color: var(--primary);
+    padding: 12px 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border: none;
+  }
+  
+  .language-options {
+    position: absolute;
+    bottom: 100%;
+    top: auto;
+    right: 0;
+    margin-bottom: 10px;
+  }
+  
+  /* Animation pulsante pour attirer l'attention */
+  @keyframes float-pulse {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+  }
+  
+  .language-dropdown-container {
+    animation: float-pulse 3s infinite ease-in-out;
+  }
+}
+
+/* Flèche d'indication du dropdown */
+.language-current::after {
+  content: '▼';
+  font-size: 10px;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.language-dropdown.active .language-current::after {
+  transform: rotate(180deg);
+}
+
+/* Étiquette de la langue actuelle */
+.current-language-label {
+  font-weight: 500;
+  font-size: 14px;
+  margin-left: 3px;
+}
+
+/* Style pour le header en mode scrollé */
+header.scrolled .language-current {
+  background-color: rgba(26, 44, 91, 0.8);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Effet de ripple au clic */
+.ripple {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
