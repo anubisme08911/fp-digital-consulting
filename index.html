@@ -12,7 +12,7 @@
     <link rel="alternate" hreflang="x-default" href="https://anubisme08911.github.io/fp-digital-consulting/" />
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/language-flags.css">
+    <link rel="stylesheet" href="css/redesigned-language-selector.css">
     <link rel="stylesheet" href="css/modern-elements.css">
     <!-- Font Awesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -33,10 +33,28 @@
                         <a href="#about" class="nav-item">À Propos</a>
                         <a href="#contact" class="nav-item">Contact</a>
                     </div>
-                    <div class="language-selector">
-                        <a href="#" data-lang="fr" class="active"><span class="flag flag-fr"></span> FR</a>
-                        <a href="#" data-lang="en"><span class="flag flag-en"></span> EN</a>
-                        <a href="#" data-lang="es"><span class="flag flag-es"></span> ES</a>
+                    
+                    <!-- Nouveau sélecteur de langue avec dropdown -->
+                    <div class="language-dropdown">
+                        <button class="language-current">
+                            <i class="fas fa-globe globe-icon"></i>
+                            <span class="language-flag flag-fr"></span>
+                            <span class="current-language-label">Français</span>
+                        </button>
+                        <div class="language-options">
+                            <a href="#" class="language-option active" data-lang="fr">
+                                <span class="language-flag flag-fr"></span>
+                                <span class="language-name">Français</span>
+                            </a>
+                            <a href="#" class="language-option" data-lang="en">
+                                <span class="language-flag flag-en"></span>
+                                <span class="language-name">English</span>
+                            </a>
+                            <a href="#" class="language-option" data-lang="es">
+                                <span class="language-flag flag-es"></span>
+                                <span class="language-name">Español</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -205,7 +223,7 @@
     </footer>
     
     <!-- Scripts -->
-    <script src="js/language-switcher.js"></script>
+    <script src="js/improved-language-switcher.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/particles.js"></script>
 </body>
