@@ -1,6 +1,7 @@
 /**
  * Script de gestion des langues amélioré pour F&P Digital Consulting
  * Gère le nouveau sélecteur dropdown et l'animation des transitions
+ * Détecte automatiquement la langue du navigateur
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -251,8 +252,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fonction pour détecter la langue du navigateur
     function detectBrowserLanguage() {
         const userLang = navigator.language || navigator.userLanguage;
-        const langCode = userLang.substring(0, 2);
+        const langCode = userLang.substring(0, 2).toLowerCase();
         
+        // Vérifier si la langue du navigateur est supportée par le site
         if (['fr', 'en', 'es'].includes(langCode)) {
             return langCode;
         }
@@ -260,25 +262,56 @@ document.addEventListener('DOMContentLoaded', function() {
         return 'fr'; // Par défaut
     }
     
-    // Rediriger automatiquement vers la langue préférée si nécessaire
+    // Fonction pour rediriger automatiquement vers la langue préférée
     function redirectToPreferredLanguage() {
-        const isHomePage = window.location.pathname === '/fp-digital-consulting/' || 
-                           window.location.pathname === '/fp-digital-consulting/index.html';
-        
-        if (isHomePage) {
-            const preferredLang = localStorage.getItem('preferredLanguage') || detectBrowserLanguage();
+        // Vérifier si c'est la première visite (aucune préférence enregistrée)
+        if (!localStorage.getItem('preferredLanguage')) {
+            // Utiliser la langue du navigateur
+            const browserLang = detectBrowserLanguage();
             
-            // Rediriger uniquement si ce n'est pas le français (qui est la langue par défaut)
-            if (preferredLang === 'en' || preferredLang === 'es') {
+            // Obtenir la langue actuelle de l'URL
+            let currentLang = 'fr';
+            const path = window.location.pathname;
+            
+            if (path.includes('/en')) {
+                currentLang = 'en';
+            } else if (path.includes('/es')) {
+                currentLang = 'es';
+            }
+            
+            // Rediriger seulement si différente de la langue du navigateur
+            if (browserLang !== currentLang) {
+                changeLanguage(browserLang);
+            }
+        } 
+        // Sinon, si une préférence a déjà été enregistrée et qu'on est sur la page d'accueil
+        else if (isHomePage()) {
+            const preferredLang = localStorage.getItem('preferredLanguage');
+            let currentLang = 'fr';
+            const path = window.location.pathname;
+            
+            if (path.includes('/en')) {
+                currentLang = 'en';
+            } else if (path.includes('/es')) {
+                currentLang = 'es';
+            }
+            
+            // Rediriger seulement si différente de la langue préférée
+            if (preferredLang !== currentLang) {
                 changeLanguage(preferredLang);
             }
         }
     }
     
-    // Exécuter au chargement de la page
-    const isHomePage = window.location.pathname === '/fp-digital-consulting/' || 
-                       window.location.pathname === '/fp-digital-consulting/index.html';
-    if (isHomePage) {
-        redirectToPreferredLanguage();
+    // Vérifier si on est sur la page d'accueil
+    function isHomePage() {
+        const path = window.location.pathname;
+        return path === '/fp-digital-consulting/' || 
+               path === '/fp-digital-consulting' || 
+               path === '/fp-digital-consulting/index.html' ||
+               path === '/';
     }
+    
+    // Exécuter la redirection automatique au chargement
+    redirectToPreferredLanguage();
 });
