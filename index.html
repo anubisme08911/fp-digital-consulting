@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F&P DIGITAL CONSULTING | Transformation Digitale</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        .highlight {
+            color: var(--secondary);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .hero {
+            height: 500px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('/api/placeholder/1200/500') center/cover no-repeat;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+        }
+        
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 36px;
+            color: var(--primary);
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 48px;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .approach {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background-color: var(--secondary);
+            border-radius: 50%;
+            line-height: 60px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .cta {
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            margin-bottom: 30px;
+        }
+        
+        .cta .btn {
+            background-color: white;
+            color: var(--secondary);
+        }
+        
+        .cta .btn:hover {
+            background-color: var(--light);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .legal {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #bdc3c7;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 36px;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">F&P <span class="highlight">DIGITAL CONSULTING</span></div>
+                <div class="nav-links">
+                    <a href="#services">Services</a>
+                    <a href="#approach">Notre Approche</a>
+                    <a href="#about">À Propos</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transformation Digitale pour Votre Entreprise</h1>
+                <p>Nous vous accompagnons dans chaque étape de votre transformation numérique pour répondre aux défis de demain.</p>
+                <a href="#contact" class="btn">Contactez-nous</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Nos Services</h2>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Conseil Stratégique</h3>
+                    <p>Élaboration de stratégies digitales sur mesure pour optimiser vos processus et développer de nouveaux modèles économiques.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Transformation Digitale</h3>
+                    <p>Accompagnement complet dans la transition vers le numérique, de l'audit initial jusqu'à l'implémentation des solutions.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👥</div>
+                    <h3>Coaching Professionnel</h3>
+                    <p>Sessions de coaching personnalisées pour développer les compétences numériques de vos équipes et favoriser l'adoption des nouvelles technologies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="approach" class="approach">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Notre Approche</h2>
+            <div class="steps">
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <h3>Audit</h3>
+                    <p>Analyse complète de votre écosystème digital actuel et identification des opportunités d'amélioration.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <h3>Stratégie</h3>
+                    <p>Élaboration d'une feuille de route digitale alignée avec vos objectifs commerciaux.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <h3>Implémentation</h3>
+                    <p>Mise en œuvre des solutions technologiques et accompagnement au changement.</p>
+                </div>
+                <div class="step">
+                    <span class="step-number">4</span>
+                    <h3>Optimisation</h3>
+                    <p>Suivi des performances et ajustements continus pour maximiser les résultats.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">À Propos de Nous</h2>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p style="font-size: 18px; margin-bottom: 30px;">
+                    F&P DIGITAL CONSULTING est une société spécialisée dans l'accompagnement des entreprises face aux défis de la transition numérique. Nous combinons expertise technique et vision stratégique pour vous aider à tirer parti des opportunités offertes par la digitalisation.
+                </p>
+                <p style="font-size: 18px;">
+                    Notre équipe d'experts est composée de professionnels passionnés par l'innovation, avec une solide expérience dans divers secteurs d'activité. Nous croyons fermement que la transformation digitale réussie repose autant sur l'humain que sur la technologie.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <div class="container">
+            <h2>Prêt à Transformer Votre Entreprise?</h2>
+            <p style="font-size: 18px; margin-bottom: 30px;">Contactez-nous dès aujourd'hui pour discuter de vos besoins en transformation digitale et coaching.</p>
+            <a href="#contact" class="btn">Demander un Devis Gratuit</a>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contactez-Nous</h2>
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <p style="font-size: 18px; margin-bottom: 30px;">
+                    Nous sommes à votre disposition pour répondre à toutes vos questions et vous accompagner dans votre transformation digitale.
+                </p>
+                <div style="background-color: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                    <div style="margin-bottom: 20px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">Email</h3>
+                        <p>contact@fpdigitalconsulting.com</p>
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">Téléphone</h3>
+                        <p>+34 XXX XXX XXX</p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--primary); margin-bottom: 10px;">Adresse</h3>
+                        <p>AVENIDA NAVARRA, 20<br>08911 - Badalona<br>Espagne</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">F&P <span class="highlight">DIGITAL CONSULTING</span></div>
+                    <p>Votre partenaire en transformation digitale et coaching professionnel.</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#services">Conseil Stratégique</a></li>
+                        <li><a href="#services">Transformation Digitale</a></li>
+                        <li><a href="#services">Coaching Professionnel</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Liens Utiles</h3>
+                    <ul>
+                        <li><a href="#about">À Propos</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Mentions Légales</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="legal">
+                <p>&copy; 2025 F&P DIGITAL CONSULTING S.L. Tous droits réservés.</p>
+                <p style="margin-top: 10px;">F&P DIGITAL CONSULTING S.L. | Adresse : AVENIDA NAVARRA, 20 - 08911 - Badalona (Espagne) | NIF : B70973193 | TVA : ESB70973193</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
