@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../css/redesigned-language-selector.css">
     <link rel="stylesheet" href="../css/modern-elements.css">
     <link rel="stylesheet" href="../css/overflow-fix.css">
+    <link rel="stylesheet" href="../css/mobile-menu.css">
     <!-- Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -27,6 +28,14 @@
         <div class="container">
             <nav>
                 <div class="logo">F&P <span class="highlight">DIGITAL CONSULTING</span></div>
+                
+                <!-- Botón hamburguesa para móvil -->
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
                 <div class="nav-container">
                     <div class="nav-links">
                         <a href="#services" class="nav-item">Servicios</a>
@@ -61,6 +70,36 @@
             </nav>
         </div>
     </header>
+    
+    <!-- Menú móvil que aparece desde el lateral -->
+    <div class="mobile-nav-container">
+        <div class="mobile-nav-links">
+            <a href="#services"><i class="fas fa-cogs"></i> Servicios</a>
+            <a href="#approach"><i class="fas fa-road"></i> Nuestro Enfoque</a>
+            <a href="#about"><i class="fas fa-info-circle"></i> Nosotros</a>
+            <a href="#contact"><i class="fas fa-envelope"></i> Contacto</a>
+        </div>
+        <div class="mobile-language-selector">
+            <div class="language-title">Cambiar Idioma</div>
+            <div class="mobile-language-options">
+                <a href="#" class="mobile-language-option" data-lang="fr">
+                    <span class="language-flag flag-fr"></span>
+                    <span class="language-name">Français</span>
+                </a>
+                <a href="#" class="mobile-language-option" data-lang="en">
+                    <span class="language-flag flag-en"></span>
+                    <span class="language-name">English</span>
+                </a>
+                <a href="#" class="mobile-language-option active" data-lang="es">
+                    <span class="language-flag flag-es"></span>
+                    <span class="language-name">Español</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Overlay que aparece detrás del menú móvil cuando está abierto -->
+    <div class="mobile-menu-overlay"></div>
     
     <section class="hero">
         <div class="container">
@@ -227,5 +266,6 @@
     <script src="../js/improved-language-switcher.js"></script>
     <script src="../js/animations.js"></script>
     <script src="../js/particles.js"></script>
+    <script src="../js/mobile-menu.js"></script>
 </body>
 </html>
