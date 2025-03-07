@@ -10,17 +10,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // La base URL du site (sans trailing slash)
         const baseUrl = window.location.origin;
         
-        // Détecter la langue actuelle et le chemin
-        const path = window.location.pathname;
-        const isHomePage = path === '/' || path === '/index.html';
-        
         // Déterminer la nouvelle URL basée sur la langue sélectionnée
         let newUrl;
         
         if (lang === 'fr') {
-            newUrl = baseUrl + '/index.html';
+            newUrl = baseUrl + '/';
         } else {
-            newUrl = baseUrl + '/' + lang + '/index.html';
+            newUrl = baseUrl + '/' + lang;
         }
         
         // Ajouter les query parameters existants s'il y en a
@@ -43,9 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let currentLang = 'fr'; // Par défaut
         const path = window.location.pathname;
         
-        if (path.includes('/en/')) {
+        if (path.includes('/en')) {
             currentLang = 'en';
-        } else if (path.includes('/es/')) {
+        } else if (path.includes('/es')) {
             currentLang = 'es';
         }
         
@@ -99,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function redirectToPreferredLanguage() {
         // Vérifier si l'utilisateur est sur la page d'accueil principale sans langue spécifiée
         const isHomePage = window.location.pathname === '/' || 
-                           window.location.pathname === '/index.html';
+                          window.location.pathname === '/index.html';
         
         if (isHomePage) {
             const preferredLang = localStorage.getItem('preferredLanguage') || detectLanguage();
@@ -117,9 +113,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let currentLang = 'fr'; // Par défaut
         const path = window.location.pathname;
         
-        if (path.includes('/en/')) {
+        if (path.includes('/en')) {
             currentLang = 'en';
-        } else if (path.includes('/es/')) {
+        } else if (path.includes('/es')) {
             currentLang = 'es';
         }
         
@@ -130,6 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fonction pour rendre le sélecteur de langue flottant sur mobile
     function setupMobileLanguageSelector() {
         const languageSelector = document.querySelector('.language-selector');
+        if (!languageSelector) return; // Sortir si le sélecteur n'existe pas
         
         // Création d'un conteneur pour le sélecteur de langue flottant sur mobile
         const mobileContainer = document.createElement('div');
@@ -139,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
         function handleResize() {
             if (window.innerWidth <= 768) {
                 // Si le sélecteur n'est pas déjà dans le conteneur mobile
-                if (languageSelector.parentElement.className !== 'language-selector-container') {
+                if (languageSelector.parentElement && languageSelector.parentElement.className !== 'language-selector-container') {
                     // Enlever le sélecteur de son emplacement actuel
                     const parent = languageSelector.parentElement;
                     parent.removeChild(languageSelector);
@@ -156,7 +153,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Le remettre à sa place originale
                     const navContainer = document.querySelector('.nav-container');
-                    navContainer.appendChild(languageSelector);
+                    if (navContainer) {
+                        navContainer.appendChild(languageSelector);
+                    }
                     
                     // Enlever le conteneur mobile s'il est dans le document
                     if (document.body.contains(mobileContainer)) {
