@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>F&P DIGITAL CONSULTING | Transformation Digitale</title>
+    <meta name="description" content="F&P Digital Consulting vous accompagne dans chaque étape de votre transformation numérique pour répondre aux défis de demain.">
+    <!-- Meta tags pour le référencement multilingue -->
+    <link rel="alternate" hreflang="fr" href="https://www.fpdigitalconsulting.com/index.html" />
+    <link rel="alternate" hreflang="en" href="https://www.fpdigitalconsulting.com/en/index.html" />
+    <link rel="alternate" hreflang="es" href="https://www.fpdigitalconsulting.com/es/index.html" />
+    <link rel="alternate" hreflang="x-default" href="https://www.fpdigitalconsulting.com/index.html" />
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -11,11 +17,18 @@
         <div class="container">
             <nav>
                 <div class="logo">F&P <span class="highlight">DIGITAL CONSULTING</span></div>
-                <div class="nav-links">
-                    <a href="#services">Services</a>
-                    <a href="#approach">Notre Approche</a>
-                    <a href="#about">À Propos</a>
-                    <a href="#contact">Contact</a>
+                <div class="nav-container">
+                    <div class="nav-links">
+                        <a href="#services">Services</a>
+                        <a href="#approach">Notre Approche</a>
+                        <a href="#about">À Propos</a>
+                        <a href="#contact">Contact</a>
+                    </div>
+                    <div class="language-selector">
+                        <a href="#" data-lang="fr" class="active">FR</a>
+                        <a href="#" data-lang="en">EN</a>
+                        <a href="#" data-lang="es">ES</a>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -159,5 +172,8 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Ajout du script de changement de langue -->
+    <script src="js/language-switcher.js"></script>
 </body>
 </html>
