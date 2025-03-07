@@ -7,35 +7,34 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Fonction pour changer de langue
     function changeLanguage(lang) {
-        // Obtenir le chemin actuel
-        const currentPath = window.location.pathname;
+        // La base URL du site (sans trailing slash)
+        const baseUrl = window.location.origin;
         
-        // Obtenir le fichier HTML actuel (ou 'index.html' par défaut)
-        let currentFile = currentPath.split('/').pop();
-        if (!currentFile || !currentFile.includes('.html')) {
-            currentFile = 'index.html';
-        }
+        // Détecter la langue actuelle et le chemin
+        const path = window.location.pathname;
+        const isHomePage = path === '/' || path === '/index.html';
         
-        // Construire le nouveau chemin basé sur la langue sélectionnée
-        let newPath;
+        // Déterminer la nouvelle URL basée sur la langue sélectionnée
+        let newUrl;
+        
         if (lang === 'fr') {
-            newPath = '/' + currentFile;
+            newUrl = baseUrl + '/index.html';
         } else {
-            newPath = '/' + lang + '/' + currentFile;
+            newUrl = baseUrl + '/' + lang + '/index.html';
         }
         
         // Ajouter les query parameters existants s'il y en a
         if (window.location.search) {
-            newPath += window.location.search;
+            newUrl += window.location.search;
         }
         
-        // Ajouter le hash s'il y en a un
+        // Ajouter le hash s'il y en a un (pour la navigation par ancre)
         if (window.location.hash) {
-            newPath += window.location.hash;
+            newUrl += window.location.hash;
         }
         
         // Rediriger vers la nouvelle URL
-        window.location.href = newPath;
+        window.location.href = newUrl;
     }
     
     // Mettre à jour l'interface utilisateur pour refléter la langue actuelle
@@ -44,9 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let currentLang = 'fr'; // Par défaut
         const path = window.location.pathname;
         
-        if (path.startsWith('/en/')) {
+        if (path.includes('/en/')) {
             currentLang = 'en';
-        } else if (path.startsWith('/es/')) {
+        } else if (path.includes('/es/')) {
             currentLang = 'es';
         }
         
@@ -118,9 +117,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let currentLang = 'fr'; // Par défaut
         const path = window.location.pathname;
         
-        if (path.startsWith('/en/')) {
+        if (path.includes('/en/')) {
             currentLang = 'en';
-        } else if (path.startsWith('/es/')) {
+        } else if (path.includes('/es/')) {
             currentLang = 'es';
         }
         
