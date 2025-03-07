@@ -7,30 +7,30 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Fonction pour changer de langue
     function changeLanguage(lang) {
-        // La base URL du site (sans trailing slash)
-        const baseUrl = window.location.origin;
+        // Pour GitHub Pages, utilisez la base du repo comme préfixe
+        const baseUrl = '/fp-digital-consulting';
         
         // Déterminer la nouvelle URL basée sur la langue sélectionnée
-        let newUrl;
+        let newPath;
         
         if (lang === 'fr') {
-            newUrl = baseUrl + '/';
+            newPath = baseUrl + '/';
         } else {
-            newUrl = baseUrl + '/' + lang;
+            newPath = baseUrl + '/' + lang;
         }
         
         // Ajouter les query parameters existants s'il y en a
         if (window.location.search) {
-            newUrl += window.location.search;
+            newPath += window.location.search;
         }
         
         // Ajouter le hash s'il y en a un (pour la navigation par ancre)
         if (window.location.hash) {
-            newUrl += window.location.hash;
+            newPath += window.location.hash;
         }
         
         // Rediriger vers la nouvelle URL
-        window.location.href = newUrl;
+        window.location.href = newPath;
     }
     
     // Mettre à jour l'interface utilisateur pour refléter la langue actuelle
@@ -94,8 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fonction pour rediriger automatiquement l'utilisateur vers sa langue préférée
     function redirectToPreferredLanguage() {
         // Vérifier si l'utilisateur est sur la page d'accueil principale sans langue spécifiée
-        const isHomePage = window.location.pathname === '/' || 
-                          window.location.pathname === '/index.html';
+        const isHomePage = window.location.pathname === '/fp-digital-consulting/' || 
+                          window.location.pathname === '/fp-digital-consulting/index.html';
         
         if (isHomePage) {
             const preferredLang = localStorage.getItem('preferredLanguage') || detectLanguage();
@@ -176,7 +176,8 @@ document.addEventListener('DOMContentLoaded', function() {
     setupMobileLanguageSelector();
     
     // Exécuter seulement sur la page d'accueil principale
-    const isHomePage = window.location.pathname === '/' || window.location.pathname === '/index.html';
+    const isHomePage = window.location.pathname === '/fp-digital-consulting/' || 
+                       window.location.pathname === '/fp-digital-consulting/index.html';
     if (isHomePage) {
         redirectToPreferredLanguage();
     }
