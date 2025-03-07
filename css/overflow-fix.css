@@ -1,0 +1,74 @@
+/**
+ * Correctifs pour éliminer la barre de défilement horizontal indésirable
+ * et assurer que tout le contenu reste dans les limites de la fenêtre
+ */
+
+/* Empêcher tout dépassement horizontal sur l'ensemble du site */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* S'assurer que tous les conteneurs respectent la largeur maximale */
+.container {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Corriger les éléments qui pourraient causer un dépassement */
+img, video, iframe, embed, object {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Empêcher les éléments de position absolue de causer des dépassements */
+.language-dropdown-container,
+.language-options {
+    max-width: 100vw;
+}
+
+/* Corriger les éléments d'animation qui pourraient causer un dépassement */
+.ripple {
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+/* Corriger les tableaux et autres éléments larges */
+table {
+    max-width: 100%;
+    display: block;
+    overflow-x: auto;
+}
+
+/* Ajuster les sections pour éviter les dépassements */
+section {
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
+}
+
+/* Corriger l'overlay de transition */
+[style*="position: fixed"] {
+    max-width: 100vw;
+}
+
+/* Ajustements pour les animations de particules */
+.particle {
+    position: absolute;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* S'assurer que l'effet d'ondulation ne cause pas de dépassement */
+@media (max-width: 768px) {
+    .wave-svg {
+        width: 100%;
+        max-width: 100vw;
+        overflow: hidden;
+    }
+}
+
+/* Correction pour les éléments de drapeau dans le sélecteur de langue */
+.language-flag {
+    flex-shrink: 0;
+}
