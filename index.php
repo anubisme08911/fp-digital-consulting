@@ -245,9 +245,11 @@ $name = $email = $phone = $subject = $message = '';
                 
                 <!-- Nouveau formulaire de contact -->
                 <div class="contact-form-container">
-                    <form id="contactForm" class="contact-form" method="post" action="includes/send-email.php">
+                    <form id="contactForm" class="contact-form" action="includes/send-email.php" method="post">
+                        <!-- Champ caché pour indiquer la langue -->
                         <input type="hidden" name="lang" value="fr">
                         
+                        <!-- Messages de succès/erreur -->
                         <?php if (!empty($formSuccess)): ?>
                         <div class="form-success-message" style="display: block;"><?php echo $formSuccess; ?></div>
                         <?php endif; ?>
@@ -261,27 +263,27 @@ $name = $email = $phone = $subject = $message = '';
                         
                         <div class="form-group">
                             <label for="name" class="required-field">Nom</label>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Votre nom" required value="<?php echo isset($name) ? htmlspecialchars($name) : ''; ?>">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Votre nom" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="email" class="required-field">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" placeholder="Votre adresse email" required value="<?php echo isset($email) ? htmlspecialchars($email) : ''; ?>">
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Votre adresse email" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="phone">Téléphone</label>
-                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Votre numéro de téléphone" value="<?php echo isset($phone) ? htmlspecialchars($phone) : ''; ?>">
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Votre numéro de téléphone">
                         </div>
                         
                         <div class="form-group">
                             <label for="subject">Sujet</label>
-                            <input type="text" id="subject" name="subject" class="form-control" placeholder="Sujet de votre message" value="<?php echo isset($subject) ? htmlspecialchars($subject) : ''; ?>">
+                            <input type="text" id="subject" name="subject" class="form-control" placeholder="Sujet de votre message">
                         </div>
                         
                         <div class="form-group">
                             <label for="message" class="required-field">Message</label>
-                            <textarea id="message" name="message" class="form-control" placeholder="Votre message" required><?php echo isset($message) ? htmlspecialchars($message) : ''; ?></textarea>
+                            <textarea id="message" name="message" class="form-control" placeholder="Votre message" required></textarea>
                         </div>
                         
                         <button type="submit" class="form-submit">
