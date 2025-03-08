@@ -2,6 +2,37 @@
 // Configuration de la date et de l'heure pour la France
 setlocale(LC_TIME, 'fr_FR.UTF8', 'fr.UTF8', 'fr_FR.UTF-8', 'fr.UTF-8');
 $dateFormat = strftime('%d %B %Y');
+
+// Traitement du formulaire de contact (à compléter par la suite)
+$formSubmitted = false;
+$formError = '';
+$formSuccess = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Récupération des données du formulaire
+    $name = isset($_POST['name']) ? trim($_POST['name']) : '';
+    $email = isset($_POST['email']) ? trim($_POST['email']) : '';
+    $phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
+    $subject = isset($_POST['subject']) ? trim($_POST['subject']) : '';
+    $message = isset($_POST['message']) ? trim($_POST['message']) : '';
+    
+    // Validation basique
+    if (empty($name) || empty($email) || empty($message)) {
+        $formError = 'Veuillez remplir tous les champs obligatoires.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $formError = 'Veuillez entrer une adresse email valide.';
+    } else {
+        // Dans une implémentation réelle, vous enverriez ici l'email
+        // Exemple: mail('contact@fpdigitalconsulting.com', 'Nouveau message du site web', $message, $headers);
+        
+        // Message de succès
+        $formSuccess = 'Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.';
+        $formSubmitted = true;
+        
+        // Réinitialiser les champs
+        $name = $email = $phone = $subject = $message = '';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -21,6 +52,7 @@ $dateFormat = strftime('%d %B %Y');
     <link rel="stylesheet" href="css/modern-elements.css">
     <link rel="stylesheet" href="css/overflow-fix.css">
     <link rel="stylesheet" href="css/mobile-menu.css">
+    <link rel="stylesheet" href="css/contact-form.css">
     <!-- Font Awesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -213,6 +245,54 @@ $dateFormat = strftime('%d %B %Y');
                 <p style="font-size: 18px; margin-bottom: 30px;">
                     Nous sommes à votre disposition pour répondre à toutes vos questions et vous accompagner dans votre transformation digitale.
                 </p>
+                
+                <!-- Nouveau formulaire de contact -->
+                <div class="contact-form-container">
+                    <form id="contactForm" class="contact-form" method="post" action="#contact">
+                        <?php if (!empty($formSuccess)): ?>
+                        <div class="form-success-message" style="display: block;"><?php echo $formSuccess; ?></div>
+                        <?php endif; ?>
+                        
+                        <?php if (!empty($formError)): ?>
+                        <div class="form-error-message" style="display: block;"><?php echo $formError; ?></div>
+                        <?php endif; ?>
+                        
+                        <div class="form-group">
+                            <label for="name" class="required-field">Nom</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Votre nom" required value="<?php echo isset($name) ? htmlspecialchars($name) : ''; ?>">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="required-field">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Votre adresse email" required value="<?php echo isset($email) ? htmlspecialchars($email) : ''; ?>">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Votre numéro de téléphone" value="<?php echo isset($phone) ? htmlspecialchars($phone) : ''; ?>">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <input type="text" id="subject" name="subject" class="form-control" placeholder="Sujet de votre message" value="<?php echo isset($subject) ? htmlspecialchars($subject) : ''; ?>">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="required-field">Message</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Votre message" required><?php echo isset($message) ? htmlspecialchars($message) : ''; ?></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">
+                            <i class="fas fa-paper-plane"></i> Envoyer
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="contact-separator">
+                    <span>OU</span>
+                </div>
+                
+                <!-- Informations de contact existantes -->
                 <div class="contact-box">
                     <div style="margin-bottom: 20px;">
                         <h3 style="color: var(--primary); margin-bottom: 10px;"><i class="fas fa-envelope"></i> Email</h3>
@@ -272,5 +352,8 @@ $dateFormat = strftime('%d %B %Y');
     <script src="js/animations.js"></script>
     <script src="js/particles.js"></script>
     <script src="js/mobile-menu.js"></script>
+    <?php if (!$formSubmitted): ?>
+    <script src="js/contact-form.js"></script>
+    <?php endif; ?>
 </body>
 </html>
