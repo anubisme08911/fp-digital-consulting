@@ -3,36 +3,33 @@
 setlocale(LC_TIME, 'fr_FR.UTF8', 'fr.UTF8', 'fr_FR.UTF-8', 'fr.UTF-8');
 $dateFormat = strftime('%d %B %Y');
 
-// Traitement du formulaire de contact (à compléter par la suite)
-$formSubmitted = false;
-$formError = '';
-$formSuccess = '';
+// Inclure le script d'envoi d'emails
+require_once 'includes/email-config.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Récupération des données du formulaire
-    $name = isset($_POST['name']) ? trim($_POST['name']) : '';
-    $email = isset($_POST['email']) ? trim($_POST['email']) : '';
-    $phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
-    $subject = isset($_POST['subject']) ? trim($_POST['subject']) : '';
-    $message = isset($_POST['message']) ? trim($_POST['message']) : '';
-    
-    // Validation basique
-    if (empty($name) || empty($email) || empty($message)) {
-        $formError = 'Veuillez remplir tous les champs obligatoires.';
-    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $formError = 'Veuillez entrer une adresse email valide.';
+// Vérifier si la session contient un résultat de formulaire
+session_start();
+$formResult = isset($_SESSION['form_result']) ? $_SESSION['form_result'] : null;
+
+// Effacer le résultat après l'avoir récupéré pour éviter qu'il ne s'affiche à nouveau en cas de rafraîchissement
+if (isset($_SESSION['form_result'])) {
+    unset($_SESSION['form_result']);
+}
+
+// Définir les variables pour les messages de succès/erreur
+$formSuccess = '';
+$formError = '';
+
+// Traiter le résultat du formulaire si disponible
+if ($formResult) {
+    if ($formResult['success']) {
+        $formSuccess = $formResult['message'];
     } else {
-        // Dans une implémentation réelle, vous enverriez ici l'email
-        // Exemple: mail('contact@fpdigitalconsulting.com', 'Nouveau message du site web', $message, $headers);
-        
-        // Message de succès
-        $formSuccess = 'Votre message a été envoyé avec succès. Nous vous répondrons dans les plus brefs délais.';
-        $formSubmitted = true;
-        
-        // Réinitialiser les champs
-        $name = $email = $phone = $subject = $message = '';
+        $formError = $formResult['message'];
     }
 }
+
+// Variables pour le formulaire (pour conserver les valeurs en cas d'erreur)
+$name = $email = $phone = $subject = $message = '';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -248,7 +245,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 <!-- Nouveau formulaire de contact -->
                 <div class="contact-form-container">
-                    <form id="contactForm" class="contact-form" method="post" action="#contact">
+                    <form id="contactForm" class="contact-form" method="post" action="includes/send-email.php">
+                        <input type="hidden" name="lang" value="fr">
+                        
                         <?php if (!empty($formSuccess)): ?>
                         <div class="form-success-message" style="display: block;"><?php echo $formSuccess; ?></div>
                         <?php endif; ?>
@@ -256,6 +255,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <?php if (!empty($formError)): ?>
                         <div class="form-error-message" style="display: block;"><?php echo $formError; ?></div>
                         <?php endif; ?>
+                        
+                        <div id="formSuccess" class="form-success-message"></div>
+                        <div id="formError" class="form-error-message"></div>
                         
                         <div class="form-group">
                             <label for="name" class="required-field">Nom</label>
@@ -352,8 +354,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="js/animations.js"></script>
     <script src="js/particles.js"></script>
     <script src="js/mobile-menu.js"></script>
-    <?php if (!$formSubmitted): ?>
     <script src="js/contact-form.js"></script>
-    <?php endif; ?>
 </body>
 </html>
