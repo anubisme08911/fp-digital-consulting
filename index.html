@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/modern-elements.css">
     <link rel="stylesheet" href="css/overflow-fix.css">
     <link rel="stylesheet" href="css/mobile-menu.css">
+    <link rel="stylesheet" href="css/contact-form.css">
     <!-- Font Awesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -208,6 +209,49 @@
                 <p style="font-size: 18px; margin-bottom: 30px;">
                     Nous sommes à votre disposition pour répondre à toutes vos questions et vous accompagner dans votre transformation digitale.
                 </p>
+                
+                <!-- Nouveau formulaire de contact -->
+                <div class="contact-form-container">
+                    <form id="contactForm" class="contact-form">
+                        <div id="formSuccess" class="form-success-message"></div>
+                        <div id="formError" class="form-error-message"></div>
+                        
+                        <div class="form-group">
+                            <label for="name" class="required-field">Nom</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Votre nom" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="required-field">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Votre adresse email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Votre numéro de téléphone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Sujet</label>
+                            <input type="text" id="subject" name="subject" class="form-control" placeholder="Sujet de votre message">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="required-field">Message</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Votre message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">
+                            <i class="fas fa-paper-plane"></i> Envoyer
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="contact-separator">
+                    <span>OU</span>
+                </div>
+                
+                <!-- Informations de contact existantes -->
                 <div class="contact-box">
                     <div style="margin-bottom: 20px;">
                         <h3 style="color: var(--primary); margin-bottom: 10px;"><i class="fas fa-envelope"></i> Email</h3>
@@ -267,5 +311,6 @@
     <script src="js/animations.js"></script>
     <script src="js/particles.js"></script>
     <script src="js/mobile-menu.js"></script>
+    <script src="js/contact-form.js"></script>
 </body>
 </html>
