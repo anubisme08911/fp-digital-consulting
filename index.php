@@ -246,35 +246,44 @@ $name = $email = $phone = $subject = $message = '';
                 <!-- Nouveau formulaire de contact -->
                 <div class="contact-form-container">
                     <form id="contactForm" class="contact-form" method="post" action="includes/send-email.php">
-                        <div id="formSuccess" class="form-success-message" <?php if (!empty($formSuccess)): ?>style="display: block;"<?php endif; ?>><?php echo $formSuccess; ?></div>
-                        <div id="formError" class="form-error-message" <?php if (!empty($formError)): ?>style="display: block;"<?php endif; ?>><?php echo $formError; ?></div>
+                        <?php if (!empty($formSuccess)): ?>
+                        <div class="form-success-message" style="display: block;"><?php echo $formSuccess; ?></div>
+                        <?php endif; ?>
                         
-                        <input type="hidden" name="lang" value="fr">
+                        <?php if (!empty($formError)): ?>
+                        <div class="form-error-message" style="display: block;"><?php echo $formError; ?></div>
+                        <?php endif; ?>
+                        
+                        <div id="formSuccess" class="form-success-message"></div>
+                        <div id="formError" class="form-error-message"></div>
                         
                         <div class="form-group">
                             <label for="name" class="required-field">Nom</label>
-                            <input type="text" id="name" name="name" class="form-control" placeholder="Votre nom" required value="<?php echo htmlspecialchars($name); ?>">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Votre nom" required value="<?php echo isset($name) ? htmlspecialchars($name) : ''; ?>">
                         </div>
                         
                         <div class="form-group">
                             <label for="email" class="required-field">Email</label>
-                            <input type="email" id="email" name="email" class="form-control" placeholder="Votre adresse email" required value="<?php echo htmlspecialchars($email); ?>">
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Votre adresse email" required value="<?php echo isset($email) ? htmlspecialchars($email) : ''; ?>">
                         </div>
                         
                         <div class="form-group">
                             <label for="phone">Téléphone</label>
-                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Votre numéro de téléphone" value="<?php echo htmlspecialchars($phone); ?>">
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Votre numéro de téléphone" value="<?php echo isset($phone) ? htmlspecialchars($phone) : ''; ?>">
                         </div>
                         
                         <div class="form-group">
                             <label for="subject">Sujet</label>
-                            <input type="text" id="subject" name="subject" class="form-control" placeholder="Sujet de votre message" value="<?php echo htmlspecialchars($subject); ?>">
+                            <input type="text" id="subject" name="subject" class="form-control" placeholder="Sujet de votre message" value="<?php echo isset($subject) ? htmlspecialchars($subject) : ''; ?>">
                         </div>
                         
                         <div class="form-group">
                             <label for="message" class="required-field">Message</label>
-                            <textarea id="message" name="message" class="form-control" placeholder="Votre message" required><?php echo htmlspecialchars($message); ?></textarea>
+                            <textarea id="message" name="message" class="form-control" placeholder="Votre message" required><?php echo isset($message) ? htmlspecialchars($message) : ''; ?></textarea>
                         </div>
+                        
+                        <!-- Champ caché pour indiquer la langue -->
+                        <input type="hidden" name="lang" value="fr">
                         
                         <button type="submit" class="form-submit">
                             <i class="fas fa-paper-plane"></i> Envoyer
