@@ -1,7 +1,38 @@
 <?php
-// Configuration de la date et de l'heure pour l'espagnol
+// Configuración de la fecha y hora para español
 setlocale(LC_TIME, 'es_ES.UTF8', 'es.UTF8', 'es_ES.UTF-8', 'es.UTF-8');
 $dateFormat = strftime('%d de %B de %Y');
+
+// Procesamiento del formulario de contacto (se completará más adelante)
+$formSubmitted = false;
+$formError = '';
+$formSuccess = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Recuperar los datos del formulario
+    $name = isset($_POST['name']) ? trim($_POST['name']) : '';
+    $email = isset($_POST['email']) ? trim($_POST['email']) : '';
+    $phone = isset($_POST['phone']) ? trim($_POST['phone']) : '';
+    $subject = isset($_POST['subject']) ? trim($_POST['subject']) : '';
+    $message = isset($_POST['message']) ? trim($_POST['message']) : '';
+    
+    // Validación básica
+    if (empty($name) || empty($email) || empty($message)) {
+        $formError = 'Por favor, rellena todos los campos obligatorios.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $formError = 'Por favor, introduce una dirección de correo electrónico válida.';
+    } else {
+        // En una implementación real, aquí se enviaría el correo electrónico
+        // Ejemplo: mail('contact@fpdigitalconsulting.com', 'Nuevo mensaje del sitio web', $message, $headers);
+        
+        // Mensaje de éxito
+        $formSuccess = 'Tu mensaje ha sido enviado con éxito. Nos pondremos en contacto contigo lo antes posible.';
+        $formSubmitted = true;
+        
+        // Reiniciar campos
+        $name = $email = $phone = $subject = $message = '';
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -21,6 +52,7 @@ $dateFormat = strftime('%d de %B de %Y');
     <link rel="stylesheet" href="../css/modern-elements.css">
     <link rel="stylesheet" href="../css/overflow-fix.css">
     <link rel="stylesheet" href="../css/mobile-menu.css">
+    <link rel="stylesheet" href="../css/contact-form.css">
     <!-- Font Awesome para iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Google Fonts -->
@@ -213,6 +245,54 @@ $dateFormat = strftime('%d de %B de %Y');
                 <p style="font-size: 18px; margin-bottom: 30px;">
                     Estamos a tu disposición para responder a todas tus preguntas y acompañarte en tu transformación digital.
                 </p>
+                
+                <!-- Nuevo formulario de contacto -->
+                <div class="contact-form-container">
+                    <form id="contactForm" class="contact-form" method="post" action="#contact">
+                        <?php if (!empty($formSuccess)): ?>
+                        <div class="form-success-message" style="display: block;"><?php echo $formSuccess; ?></div>
+                        <?php endif; ?>
+                        
+                        <?php if (!empty($formError)): ?>
+                        <div class="form-error-message" style="display: block;"><?php echo $formError; ?></div>
+                        <?php endif; ?>
+                        
+                        <div class="form-group">
+                            <label for="name" class="required-field">Nombre</label>
+                            <input type="text" id="name" name="name" class="form-control" placeholder="Tu nombre" required value="<?php echo isset($name) ? htmlspecialchars($name) : ''; ?>">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="required-field">Email</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Tu dirección de email" required value="<?php echo isset($email) ? htmlspecialchars($email) : ''; ?>">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="Tu número de teléfono" value="<?php echo isset($phone) ? htmlspecialchars($phone) : ''; ?>">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Asunto</label>
+                            <input type="text" id="subject" name="subject" class="form-control" placeholder="Asunto de tu mensaje" value="<?php echo isset($subject) ? htmlspecialchars($subject) : ''; ?>">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="required-field">Mensaje</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Tu mensaje" required><?php echo isset($message) ? htmlspecialchars($message) : ''; ?></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">
+                            <i class="fas fa-paper-plane"></i> Enviar
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="contact-separator">
+                    <span>O</span>
+                </div>
+                
+                <!-- Información de contacto existente -->
                 <div class="contact-box">
                     <div style="margin-bottom: 20px;">
                         <h3 style="color: var(--primary); margin-bottom: 10px;"><i class="fas fa-envelope"></i> Email</h3>
@@ -272,5 +352,8 @@ $dateFormat = strftime('%d de %B de %Y');
     <script src="../js/animations.js"></script>
     <script src="../js/particles.js"></script>
     <script src="../js/mobile-menu.js"></script>
+    <?php if (!$formSubmitted): ?>
+    <script src="../js/contact-form.js"></script>
+    <?php endif; ?>
 </body>
 </html>
